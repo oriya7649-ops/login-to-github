@@ -35,8 +35,8 @@ jobs:
 
       - name: Run tests
         env:
-          GITHUB_TEST_EMAIL: ${{ vars.TEST_GITHUB_EMAIL }}
-          PASSWORD_GITHUB: ${{ secrets.TEST_GITHUB_PASSWORD }}
+          TEST_GITHUB_EMAIL: ${{ vars.TEST_GITHUB_EMAIL }}
+          TEST_GITHUB_PASSWORD: ${{ secrets.TEST_GITHUB_PASSWORD }}
         run: pytest -sv
 
 
