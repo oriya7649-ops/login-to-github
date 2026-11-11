@@ -1,11 +1,18 @@
+
 import pytest
 from selenium import webdriver
-import os
 @pytest.fixture
 def driver():
-    # optinot=webdriver.ChromeOptions()
-    # optinot.add_argument("--headlees")
-    driver = webdriver.Chrome()
-    # print(f"driver:{driver}")
+    # הגדרת אפשרויות לדפדפן Chrome
+    options = webdriver.ChromeOptions()
+    # הפעלת Chrome ללא חלון גרפי
+    options.add_argument("--headless=new")
+    # הגדרות שמתאימות לסביבת CI
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    # פתיחת הדפדפן עם האפשרויות
+    driver = webdriver.Chrome(options=options)
+    # העברת הדפדפן לטסט
     yield driver
+    # סגירת הדפדפן בסיום
     driver.quit()
